@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a href="name=ali">esm</a>
+<div id="division"></div>
+
+
+<script>
+    const a = document.querySelector('a');
+    const href = a.getAttribute('href') ;
+    const division = document.querySelector('#division');
+    a.addEventListener('click', function(e){
+        e.preventDefault();
+
+        // Create an XMLHttpRequest object
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+            if(xhr.status === 200){
+                division.innerHTML = xhr.responseText;
+            }
+        }
+
+        // Send a request
+        const url = 'test.php?'+ href;
+        xhr.open("GET", url );
+        xhr.send();
+
+    })
+
+
+
+
+
+</script>
+</body>
+</html>
